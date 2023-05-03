@@ -5,17 +5,16 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/pkg/errors"
+	"github.com/qq992936/machinery/v1/brokers/errs"
+	"github.com/qq992936/machinery/v1/brokers/iface"
+	"github.com/qq992936/machinery/v1/common"
+	"github.com/qq992936/machinery/v1/config"
+	"github.com/qq992936/machinery/v1/tasks"
+	"github.com/qq992936/machinery/v2/log"
+	"github.com/streadway/amqp"
 	"sync"
 	"time"
-
-	"github.com/RichardKnop/machinery/v1/brokers/errs"
-	"github.com/RichardKnop/machinery/v1/brokers/iface"
-	"github.com/RichardKnop/machinery/v1/common"
-	"github.com/RichardKnop/machinery/v1/config"
-	"github.com/RichardKnop/machinery/v1/log"
-	"github.com/RichardKnop/machinery/v1/tasks"
-	"github.com/pkg/errors"
-	"github.com/streadway/amqp"
 )
 
 type AMQPConnection struct {

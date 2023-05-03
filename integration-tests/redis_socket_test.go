@@ -5,8 +5,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/RichardKnop/machinery/v1"
-	"github.com/RichardKnop/machinery/v1/config"
+	"github.com/qq992936/machinery/v1"
+	"github.com/qq992936/machinery/v1/config"
 )
 
 func TestRedisSocket(t *testing.T) {

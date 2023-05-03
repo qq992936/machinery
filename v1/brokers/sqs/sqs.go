@@ -9,17 +9,16 @@ import (
 	"sync"
 	"time"
 
-	"github.com/RichardKnop/machinery/v1/brokers/errs"
-	"github.com/RichardKnop/machinery/v1/brokers/iface"
-	"github.com/RichardKnop/machinery/v1/common"
-	"github.com/RichardKnop/machinery/v1/config"
-	"github.com/RichardKnop/machinery/v1/log"
-	"github.com/RichardKnop/machinery/v1/tasks"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/sqs/sqsiface"
-
 	awssqs "github.com/aws/aws-sdk-go/service/sqs"
+	"github.com/aws/aws-sdk-go/service/sqs/sqsiface"
+	"github.com/qq992936/machinery/v1/brokers/errs"
+	"github.com/qq992936/machinery/v1/brokers/iface"
+	"github.com/qq992936/machinery/v1/common"
+	"github.com/qq992936/machinery/v1/config"
+	"github.com/qq992936/machinery/v1/tasks"
+	"github.com/qq992936/machinery/v2/log"
 )
 
 const (
@@ -166,7 +165,7 @@ func (b *Broker) Publish(ctx context.Context, signature *tasks.Signature) error 
 	}
 
 	result, err := b.service.SendMessageWithContext(ctx, MsgInput)
-
+	_ = result
 	if err != nil {
 		log.ERROR.Printf("Error when sending a message: %v", err)
 		return err

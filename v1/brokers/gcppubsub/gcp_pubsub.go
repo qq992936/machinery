@@ -2,17 +2,16 @@ package gcppubsub
 
 import (
 	"bytes"
+	"cloud.google.com/go/pubsub"
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/qq992936/machinery/v1/brokers/iface"
+	"github.com/qq992936/machinery/v1/common"
+	"github.com/qq992936/machinery/v1/config"
+	"github.com/qq992936/machinery/v1/tasks"
+	"github.com/qq992936/machinery/v2/log"
 	"time"
-
-	"cloud.google.com/go/pubsub"
-	"github.com/RichardKnop/machinery/v1/brokers/iface"
-	"github.com/RichardKnop/machinery/v1/common"
-	"github.com/RichardKnop/machinery/v1/config"
-	"github.com/RichardKnop/machinery/v1/log"
-	"github.com/RichardKnop/machinery/v1/tasks"
 )
 
 // Broker represents an Google Cloud Pub/Sub broker
@@ -154,6 +153,7 @@ func (b *Broker) Publish(ctx context.Context, signature *tasks.Signature) error 
 	})
 
 	id, err := result.Get(ctx)
+	_ = id
 	if err != nil {
 		log.ERROR.Printf("Error when sending a message: %v", err)
 		return err

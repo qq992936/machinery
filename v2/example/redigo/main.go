@@ -10,18 +10,17 @@ import (
 	"github.com/google/uuid"
 	"github.com/urfave/cli"
 
-	"github.com/RichardKnop/machinery/v2"
-	"github.com/RichardKnop/machinery/v2/config"
-	"github.com/RichardKnop/machinery/v2/log"
-	"github.com/RichardKnop/machinery/v2/tasks"
+	"github.com/qq992936/machinery/v2"
+	"github.com/qq992936/machinery/v2/config"
+	"github.com/qq992936/machinery/v2/log"
+	"github.com/qq992936/machinery/v2/tasks"
 
-	redisbackend "github.com/RichardKnop/machinery/v2/backends/redis"
-	redisbroker "github.com/RichardKnop/machinery/v2/brokers/redis"
-	exampletasks "github.com/RichardKnop/machinery/v2/example/tasks"
-	"github.com/RichardKnop/machinery/v2/example/tracers"
-	eagerlock "github.com/RichardKnop/machinery/v2/locks/eager"
-	"github.com/opentracing/opentracing-go"
 	opentracinglog "github.com/opentracing/opentracing-go/log"
+	redisbackend "github.com/qq992936/machinery/v2/backends/redis"
+	redisbroker "github.com/qq992936/machinery/v2/brokers/redis"
+	exampletasks "github.com/qq992936/machinery/v2/example/tasks"
+	"github.com/qq992936/machinery/v2/example/tracers"
+	eagerlock "github.com/qq992936/machinery/v2/locks/eager"
 )
 
 var (

@@ -2,11 +2,11 @@ package config
 
 import (
 	"fmt"
+	"gopkg.in/yaml.v2"
 	"os"
 	"time"
 
-	"github.com/RichardKnop/machinery/v1/log"
-	"gopkg.in/yaml.v2"
+	"github.com/qq992936/machinery/v1/log"
 )
 
 // NewFromYaml creates a config object from YAML file

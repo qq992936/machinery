@@ -10,15 +10,15 @@ import (
 	"github.com/google/uuid"
 	"github.com/urfave/cli"
 
-	"github.com/RichardKnop/machinery/v1"
-	"github.com/RichardKnop/machinery/v1/config"
-	"github.com/RichardKnop/machinery/v1/log"
-	"github.com/RichardKnop/machinery/v1/tasks"
+	"github.com/qq992936/machinery/v1"
+	"github.com/qq992936/machinery/v1/config"
+	"github.com/qq992936/machinery/v1/log"
+	"github.com/qq992936/machinery/v1/tasks"
 
-	exampletasks "github.com/RichardKnop/machinery/example/tasks"
-	tracers "github.com/RichardKnop/machinery/example/tracers"
 	opentracing "github.com/opentracing/opentracing-go"
 	opentracing_log "github.com/opentracing/opentracing-go/log"
+	exampletasks "github.com/qq992936/machinery/example/tasks"
+	tracers "github.com/qq992936/machinery/example/tracers"
 )
 
 var (

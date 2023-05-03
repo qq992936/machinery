@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/RichardKnop/machinery/v1"
-	"github.com/RichardKnop/machinery/v1/config"
-	"github.com/RichardKnop/machinery/v1/tasks"
+	"github.com/qq992936/machinery/v1"
+	"github.com/qq992936/machinery/v1/config"
+	"github.com/qq992936/machinery/v1/tasks"
 	"github.com/stretchr/testify/suite"
 )
 

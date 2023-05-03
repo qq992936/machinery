@@ -3,6 +3,7 @@ package machinery
 import (
 	"errors"
 	"fmt"
+	"github.com/opentracing/opentracing-go"
 	"net/url"
 	"os"
 	"os/signal"
@@ -10,14 +11,12 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/opentracing/opentracing-go"
-	
-	"github.com/RichardKnop/machinery/v1/backends/amqp"
-	"github.com/RichardKnop/machinery/v1/brokers/errs"
-	"github.com/RichardKnop/machinery/v1/log"
-	"github.com/RichardKnop/machinery/v1/retry"
-	"github.com/RichardKnop/machinery/v1/tasks"
-	"github.com/RichardKnop/machinery/v1/tracing"
+	"github.com/qq992936/machinery/v1/backends/amqp"
+	"github.com/qq992936/machinery/v1/brokers/errs"
+	"github.com/qq992936/machinery/v1/log"
+	"github.com/qq992936/machinery/v1/retry"
+	"github.com/qq992936/machinery/v1/tasks"
+	"github.com/qq992936/machinery/v1/tracing"
 )
 
 // Worker represents a single worker process

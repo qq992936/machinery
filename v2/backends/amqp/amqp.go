@@ -20,11 +20,11 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/RichardKnop/machinery/v2/backends/iface"
-	"github.com/RichardKnop/machinery/v2/common"
-	"github.com/RichardKnop/machinery/v2/config"
-	"github.com/RichardKnop/machinery/v2/log"
-	"github.com/RichardKnop/machinery/v2/tasks"
+	"github.com/qq992936/machinery/v2/backends/iface"
+	"github.com/qq992936/machinery/v2/common"
+	"github.com/qq992936/machinery/v2/config"
+	"github.com/qq992936/machinery/v2/log"
+	"github.com/qq992936/machinery/v2/tasks"
 	"github.com/streadway/amqp"
 )
 

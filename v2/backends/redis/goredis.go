@@ -4,19 +4,19 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"github.com/go-redsync/redsync/v4"
+	"github.com/redis/go-redis/v9"
 	"strings"
 	"sync"
 	"time"
 
-	"github.com/go-redis/redis/v8"
-	"github.com/go-redsync/redsync/v4"
-	redsyncgoredis "github.com/go-redsync/redsync/v4/redis/goredis/v8"
+	redsyncgoredis "github.com/go-redsync/redsync/v4/redis/goredis/v9"
 
-	"github.com/RichardKnop/machinery/v2/backends/iface"
-	"github.com/RichardKnop/machinery/v2/common"
-	"github.com/RichardKnop/machinery/v2/config"
-	"github.com/RichardKnop/machinery/v2/log"
-	"github.com/RichardKnop/machinery/v2/tasks"
+	"github.com/qq992936/machinery/v2/backends/iface"
+	"github.com/qq992936/machinery/v2/common"
+	"github.com/qq992936/machinery/v2/config"
+	"github.com/qq992936/machinery/v2/log"
+	"github.com/qq992936/machinery/v2/tasks"
 )
 
 // BackendGR represents a Redis result backend

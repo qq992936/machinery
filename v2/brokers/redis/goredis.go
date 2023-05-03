@@ -5,21 +5,20 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/go-redsync/redsync/v4"
+	"github.com/redis/go-redis/v9"
 	"runtime"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
 
-	"github.com/go-redis/redis/v8"
-	"github.com/go-redsync/redsync/v4"
-
-	"github.com/RichardKnop/machinery/v2/brokers/errs"
-	"github.com/RichardKnop/machinery/v2/brokers/iface"
-	"github.com/RichardKnop/machinery/v2/common"
-	"github.com/RichardKnop/machinery/v2/config"
-	"github.com/RichardKnop/machinery/v2/log"
-	"github.com/RichardKnop/machinery/v2/tasks"
+	"github.com/qq992936/machinery/v2/brokers/errs"
+	"github.com/qq992936/machinery/v2/brokers/iface"
+	"github.com/qq992936/machinery/v2/common"
+	"github.com/qq992936/machinery/v2/config"
+	"github.com/qq992936/machinery/v2/log"
+	"github.com/qq992936/machinery/v2/tasks"
 )
 
 // BrokerGR represents a Redis broker
@@ -195,7 +194,7 @@ func (b *BrokerGR) Publish(ctx context.Context, signature *tasks.Signature) erro
 
 		if signature.ETA.After(now) {
 			score := signature.ETA.UnixNano()
-			err = b.rclient.ZAdd(context.Background(), b.redisDelayedTasksKey, &redis.Z{Score: float64(score), Member: msg}).Err()
+			err = b.rclient.ZAdd(context.Background(), b.redisDelayedTasksKey, redis.Z{Score: float64(score), Member: msg}).Err()
 			return err
 		}
 	}

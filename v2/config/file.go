@@ -5,8 +5,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/RichardKnop/machinery/v2/log"
-	"gopkg.in/yaml.v2"
+	"github.com/qq992936/machinery/v2/log"
 )
 
 // NewFromYaml creates a config object from YAML file
