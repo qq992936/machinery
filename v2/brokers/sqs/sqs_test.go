@@ -87,10 +87,8 @@ func TestPrivateFunc_continueReceivingMessages(t *testing.T) {
 
 func TestPrivateFunc_consume(t *testing.T) {
 
-	server1, err := machinery.NewServer(cnf)
-	if err != nil {
-		t.Fatal(err)
-	}
+	server1 := machinery.NewServer(cnf, nil, nil, nil)
+
 	pool := make(chan struct{})
 	wk := server1.NewWorker("sms_worker", 0)
 	deliveries := make(chan *awssqs.ReceiveMessageOutput)
@@ -101,20 +99,18 @@ func TestPrivateFunc_consume(t *testing.T) {
 	broker := sqs.NewTestBroker()
 
 	// an infinite loop will be executed only when there is no error
-	err = broker.ConsumeForTest(deliveries, 0, wk, pool)
+	err := broker.ConsumeForTest(deliveries, 0, wk, pool)
 	assert.NotNil(t, err)
 }
 
 func TestPrivateFunc_consumeOne(t *testing.T) {
 
-	server1, err := machinery.NewServer(cnf)
-	if err != nil {
-		t.Fatal(err)
-	}
+	server1 := machinery.NewServer(cnf, nil, nil, nil)
+
 	wk := server1.NewWorker("sms_worker", 0)
 	broker := sqs.NewTestBroker()
 
-	err = broker.ConsumeOneForTest(receiveMessageOutput, wk)
+	err := broker.ConsumeOneForTest(receiveMessageOutput, wk)
 	assert.NotNil(t, err)
 
 	outputCopy := *receiveMessageOutput
@@ -143,10 +139,7 @@ func TestPrivateFunc_initializePool(t *testing.T) {
 
 func TestPrivateFunc_startConsuming(t *testing.T) {
 
-	server1, err := machinery.NewServer(cnf)
-	if err != nil {
-		t.Fatal(err)
-	}
+	server1 := machinery.NewServer(cnf, nil, nil, nil)
 
 	wk := server1.NewWorker("sms_worker", 0)
 	broker := sqs.NewTestBroker()
@@ -197,10 +190,7 @@ func TestPrivateFunc_consumeDeliveries(t *testing.T) {
 	pool := make(chan struct{}, concurrency)
 	errorsChan := make(chan error)
 	deliveries := make(chan *awssqs.ReceiveMessageOutput)
-	server1, err := machinery.NewServer(cnf)
-	if err != nil {
-		t.Fatal(err)
-	}
+	server1 := machinery.NewServer(cnf, nil, nil, nil)
 
 	wk := server1.NewWorker("sms_worker", 0)
 	broker := sqs.NewTestBroker()
@@ -265,10 +255,7 @@ func TestPrivateFunc_deleteOne(t *testing.T) {
 
 func Test_CustomQueueName(t *testing.T) {
 
-	server1, err := machinery.NewServer(cnf)
-	if err != nil {
-		t.Fatal(err)
-	}
+	server1 := machinery.NewServer(cnf, nil, nil, nil)
 
 	broker := sqs.NewTestBroker()
 
@@ -294,11 +281,9 @@ func TestPrivateFunc_consumeWithConcurrency(t *testing.T) {
 	output := make(chan string) // The output channel
 
 	cnf.ResultBackend = "eager"
-	server1, err := machinery.NewServer(cnf)
-	if err != nil {
-		t.Fatal(err)
-	}
-	err = server1.RegisterTask("test-task", func(ctx context.Context) error {
+	server1 := machinery.NewServer(cnf, nil, nil, nil)
+
+	err := server1.RegisterTask("test-task", func(ctx context.Context) error {
 		output <- testResp
 
 		return nil

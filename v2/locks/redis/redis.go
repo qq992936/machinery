@@ -1,7 +1,9 @@
 package redis
 
 import (
+	"context"
 	"errors"
+	"github.com/redis/go-redis/v9"
 	"strconv"
 	"strings"
 	"time"
@@ -63,7 +65,7 @@ func (r Lock) LockWithRetries(key string, unixTsToExpireNs int64) error {
 func (r Lock) Lock(key string, unixTsToExpireNs int64) error {
 	now := time.Now().UnixNano()
 	expiration := time.Duration(unixTsToExpireNs + 1 - now)
-	ctx := r.rclient.Context()
+	ctx := context.Background() //r.rclient.Context()
 
 	success, err := r.rclient.SetNX(ctx, key, unixTsToExpireNs, expiration).Result()
 	if err != nil {
